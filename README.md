@@ -1,20 +1,3 @@
-# devops-netology123
-
-## Игнорируемые файлы
-
-### Для Terraform:
-Файлы состояния (.tfstate, .tfstate.*)
-Файлы логов crash (.crash.log)
-Файлы с чувствительными данными (.tfvars)
-Файлы планов выполнения (terraform.tfplan)
-Директории кэша (.terraform/)
-Файлы блокировок (.terraform.lock.hcl)
-
-### Общие правила:
-Системные файлы (.DS_Store, Thumbs.db)
-Файлы IDE (.idea/, .vscode/)
-Временные файлы (*~, .#*)
-
 # Домашнее задание к занятию "`Системы контроля версий`" - `Лычагин Н.В.`
 
 
@@ -56,16 +39,17 @@
 
 3. Создайте авторизационный токен для клонирования репозитория.
 
+```bash
     Уже был создан.
-
+```
 4. Склонируйте репозиторий, используя протокол HTTPS (git clone ...).
 5. Перейдите в каталог с клоном репозитория (cd devops-netology).
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/2.jpeg)
 
 6. Произведите первоначальную настройку Git, указав своё настоящее имя, чтобы нам было проще общаться, и email (git config --global user.name и git config --global user.email johndoe@example.com).
-
+```bash
     Как только я сделал задание целиком, я заметил что пропустил этот пункт >_< ...
-
+```
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/20.png)
 
 7. Выполните команду git status и запомните результат.
@@ -76,50 +60,50 @@
 9. Ещё раз выполните git status и продолжайте проверять вывод этой команды после каждого следующего шага.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/4.jpeg)
-
+```bash
     Файл README.md в состоянии (modified) и изменения не подготовлены для коммита (not staged).
-
+```
 10. Теперь посмотрите изменения в файле README.md, выполнив команды git diff и git diff --staged.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/5.jpeg)
-
-git diff показывает что удалена строка # devops-netology и добавлена # devops-netology123, а git diff --staged ничего не показывает т.к. изменения не добавлены в staged.
-
+```bash
+    git diff показывает что удалена строка # devops-netology и добавлена # devops-netology123, а git diff --staged ничего не показывает т.к. изменения не добавлены в staged.
+```
 11. Переведите файл в состояние staged (или, как говорят, просто добавьте файл в коммит) командой git add README.md.
 12. И ещё раз выполните команды git diff и git diff --staged. Поиграйте с изменениями и этими командами, чтобы чётко понять, что и когда они отображают.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/6.jpeg)
-
+```bash
     Теперь git status показывает что файл готов к коммиту, git diff ничего не показывает т.к. изменения уже в индексе, git diff --staged показывает те же изменения, что ранее показывал git diff.
 
     Таким образом, подводя краткий итог:
     git diff - показывает изменения между рабочим каталогом и индексом
     git diff --staged - показывает изменения между индексом и последним коммитом
-
+```
 13. Теперь можно сделать коммит git commit -m 'First commit'.
 14. И ещё раз посмотреть выводы команд git status, git diff и git diff --staged.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/7.jpeg)
-
+```bash
     После коммита выводит данное сообщение: Your branch is ahead of 'origin/main' by 1 commit, это означает -  в локальном репозитории на 1 коммит больше, чем в удаленном (origin/main). Поэтому предлагает запушить, но это бдует дальше в задании.
-
+```
 ### Создание файлов .gitignore и второго коммита
 
 1. Создайте файл .gitignore (обратите внимание на точку в начале файла), проверьте его статус сразу после создания.
 2. Добавьте файл .gitignore в следующий коммит (git add...).
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/8.jpeg)
-
+```bash
     Вывод показывает, что мы добавили новый файл или перевели в состояние  staged.
-
+```
 3. На одном из следующих блоков вы будете изучать Terraform, давайте сразу создадим соотвествующий каталог terraform и внутри этого каталога — файл .gitignore по примеру: https://github.com/github/gitignore/blob/master/Terraform.gitignore.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/9.jpeg)
-
+```bash
     Видим следующую ситуацию:
 
     .gitignore в staged, а terraform untracked files т.к мы не добавили каталог add .
-
+```
 4. В файле README.md опишите своими словами, какие файлы будут проигнорированы в будущем благодаря добавленному .gitignore
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/10.jpeg)
@@ -141,15 +125,15 @@ git diff показывает что удалена строка # devops-netolo
 3. Удалите файл will_be_deleted.txt с диска и из репозитория.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/14.jpeg)
-
+```bash
     Вывод git status показывает, что файл удален.
-
+```
 4. Переименуйте (переместите) файл will_be_moved.txt на диске и в репозитории, чтобы он стал называться has_been_moved.txt.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/15.jpeg)
-
+```bash
     В выводе добавилось, что файл переименован.
-
+```
 5. Закоммитьте результат работы с комментарием Moved and deleted.
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/16.jpeg)
@@ -163,14 +147,13 @@ Added gitignore — после добавления .gitignore.
 Prepare to delete and move — после добавления двух временных файлов.
 Moved and deleted — после удаления и перемещения временных файлов.
 2. Проверьте это, используя комманду git log. Подробно о формате вывода этой команды мы поговорим на следующем занятии, но посмотреть, что она отображает, можно уже сейчас.
-
-
+```bash
     Полный вывод
-
+```
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/17.jpeg)
-
+```bash
     Укороченный вывод
-
+```
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/18.jpeg)
 
 ### Отправка изменений в репозиторий
@@ -181,3 +164,24 @@ Moved and deleted — после удаления и перемещения вр
 
 ![alt text](https://github.com/Nikich828/devops-netology/blob/main/19.jpeg)
 
+
+
+
+
+### Приложение
+# devops-netology123
+
+## Игнорируемые файлы
+
+### Для Terraform:
+Файлы состояния (.tfstate, .tfstate.*)
+Файлы логов crash (.crash.log)
+Файлы с чувствительными данными (.tfvars)
+Файлы планов выполнения (terraform.tfplan)
+Директории кэша (.terraform/)
+Файлы блокировок (.terraform.lock.hcl)
+
+### Общие правила:
+Системные файлы (.DS_Store, Thumbs.db)
+Файлы IDE (.idea/, .vscode/)
+Временные файлы (*~, .#*)
